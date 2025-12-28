@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { background: #1a1a1a; color: white; text-align: center; font-family: sans-serif; padding: 20px; }
+        .btn { 
+            display: block; width: 100%; padding: 15px; margin: 10px 0; 
+            background: #0088cc; color: white; border: none; border-radius: 10px; 
+            font-weight: bold; cursor: pointer;
+        }
+        .btn:active { background: #005580; }
+    </style>
+</head>
+<body>
+    <h1>TORRENTOV SHOP</h1>
+    <p>Нажми на кнопку для выбора:</p>
+    
+    <button class="btn" onclick="send('def_standard')">🛡️ Стандартный деф</button>
+    <button class="btn" onclick="send('edit_simple')">🎬 Простой эдит</button>
+    <button class="btn" onclick="send('other_manual')">📖 Мануал</button>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        
+        function send(item) {
+            console.log("Выбрано:", item); // Это для проверки в браузере
+            alert("Вы выбрали: " + item); // Если это сработает в Хроме, значит кнопка живая!
+            
+            // Отправка данных боту (работает только внутри ТГ)
+            if (tg.sendData) {
+                tg.sendData("info_" + item);
+            }
+        }
+    </script>
+</body>
+</html>
